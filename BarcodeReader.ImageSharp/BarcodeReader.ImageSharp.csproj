@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>BarcodeReader.ImageSharp</AssemblyName>
+    <RootNamespace>BarcodeReader.ImageSharp</RootNamespace>
+    <PackageId>BarcodeReader.ImageSharp</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Baltermia Clopath</Authors>
+    <RepositoryUrl>https://github.com/speyck/barcodereader-imagesharp</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Description>A barcode reader compatible with SixLabors.ImageSharp using ZXing. Trying to move one off System.Drawing.Common.</Description>
+    <PackageReleaseNotes></PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ZXing.Net.Bindings.ImageSharp" Version="0.16.9-beta" />
+  </ItemGroup>
+
+</Project>
