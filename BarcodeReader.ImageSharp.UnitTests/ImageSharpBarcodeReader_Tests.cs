@@ -4,6 +4,7 @@ using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Formats.Png;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace BarcodeReader.ImageSharp.UnitTests
 {
@@ -59,24 +60,92 @@ namespace BarcodeReader.ImageSharp.UnitTests
         [Test]
         public void DecodeAsync_QRcodeBase64() => Test(() => readerQR.DecodeAsync(qrcodeBase64).Result);
 
+        [Test]
+        public void DecodeWithEvent()
+        {
+            try
+            {
+                string value = null;
+
+                reader1D.DetectedBarcode += (sender, e) => value = e.Result.Value;
+
+                reader1D.Decode(barcodeBase64);
+
+                switch (value)
+                {
+                    case CodeText:
+                        Assert.Pass("Barcode successfuly decoded, event was fired.", value);
+                        break;
+                    case null:
+                        Assert.Fail($"No event was fired.");
+                        break;
+                    default:
+                        Assert.Fail($"Barcode got decoded but the wrong value was returned. Expected: '{CodeText}', Recieved: '{value}'.");
+                        break;
+                }
+            }
+            catch (SuccessException)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"Case threw an exception. Message: {ex.Message}", ex);
+            }
+        }
+
+        [Test]
+        public async Task DecodeWithEventAsync()
+        {
+            try
+            {
+                string value = null;
+
+                reader1D.DetectedBarcode += (sender, e) => value = e.Result.Value;
+
+                await reader1D.DecodeAsync(barcodeBase64);
+
+                switch (value)
+                {
+                    case CodeText:
+                        Assert.Pass("Barcode successfuly decoded, event was fired.", value);
+                        break;
+                    case null:
+                        Assert.Fail($"No event was fired.");
+                        break;
+                    default:
+                        Assert.Fail($"Barcode got decoded but the wrong value was returned. Expected: '{CodeText}', Recieved: '{value}'.");
+                        break;
+                }
+            }
+            catch (SuccessException)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"Case threw an exception. Message: {ex.Message}", ex);
+            }
+        }
+
         private static void Test(Func<BarcodeResult> func)
         {
             try
             {
-                BarcodeResult results = func.Invoke();
+                BarcodeResult result = func.Invoke();
 
-                switch (results.Status)
+                switch (result.Status)
                 {
                     case Status.Found:
-                        if (results.Value == CodeText)
-                            Assert.Pass("Barcode successfuly decoded.", results.Value);
-                        Assert.Fail($"Barcode got decoded but the wrong value was returned. Expected: '{CodeText}', Recieved: '{results.Value}'.");
+                        if (result.Value == CodeText)
+                            Assert.Pass("Barcode successfuly decoded.", result.Value);
+                        Assert.Fail($"Barcode got decoded but the wrong value was returned. Expected: '{CodeText}', Recieved: '{result.Value}'.");
                         break;
                     case Status.NotFound:
-                        Assert.Fail(results.Message);
+                        Assert.Fail(result.Message);
                         break;
                     case Status.Error:
-                        Assert.Fail($"An error occured while decoding. Message: {results.Message}");
+                        Assert.Fail($"An error occured while decoding. Message: {result.Message}");
                         break;
                 }
             }
