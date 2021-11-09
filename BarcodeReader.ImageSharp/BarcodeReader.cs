@@ -123,13 +123,18 @@ namespace BarcodeReader.ImageSharp
         /// </summary>
         /// <param name="data">Base64 string representing the image</param>
         /// <returns>Result holding the value if a barcode is found or the error message</returns>
-        public BarcodeResult Decode(string data) => Decode(Convert.FromBase64String(data.Split(',')[data.Contains(',') ? 1 : 0]));
+        public BarcodeResult Decode(string data) => Decode(Convert.FromBase64String(RemoveBase64Prefix(data)));
 
         /// <summary>
         /// Decodes a barcode asynchronously from the provided ImageSharp.Image. Make sure to await this method
         /// </summary>
         /// <param name="data">Base64 string representing the image</param>
         /// <returns>Result holding the value if a barcode is found or the error message</returns>
-        public Task<BarcodeResult> DecodeAsync(string data) => DecodeAsync(Image.Load(Convert.FromBase64String(data.Split(',')[data.Contains(',') ? 1 : 0])));
+        public Task<BarcodeResult> DecodeAsync(string data) => DecodeAsync(Image.Load(Convert.FromBase64String(RemoveBase64Prefix(data))));
+
+        /// <summary>
+        /// Cuts off the prefix of a base64 image string if it has one
+        /// </summary>
+        private static string RemoveBase64Prefix(string img) => img.Split(',')[img.Contains(',') ? 1 : 0];
     }
 }
