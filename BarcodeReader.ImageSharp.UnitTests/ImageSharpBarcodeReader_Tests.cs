@@ -38,8 +38,8 @@ namespace BarcodeReader.ImageSharp.UnitTests
             barcodeBytes = Convert.FromBase64String(barcodeBase64.Split(',')[1]);
             qrcodeBytes = Convert.FromBase64String(qrcodeBase64.Split(',')[1]);
 
-            reader1D = new();
-            readerQR = new(types: ZXing.BarcodeFormat.QR_CODE);
+            reader1D = new BarcodeReader();
+            readerQR = new BarcodeReader(types: ZXing.BarcodeFormat.QR_CODE);
         }
 
         [Test]
