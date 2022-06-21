@@ -1,4 +1,5 @@
 ﻿using System;
+using SixLabors;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp;
 using ZXing.Common;
@@ -33,7 +34,7 @@ namespace BarcodeReader.ImageSharp
         /// <param name="performanceMode">The decoder will take less resources to search for the barcodes. By default the mode is set to performance</param>
         public BarcodeReader(bool performanceMode = true, params BarcodeFormat[] types)
         {
-            reader = new()
+            reader = new ZXing.ImageSharp.BarcodeReader<Rgba32>()
             {
                 AutoRotate = !performanceMode,
                 Options = new DecodingOptions()
@@ -52,7 +53,7 @@ namespace BarcodeReader.ImageSharp
         /// <param name="type">What type of barcode the provided bitmap should be searched for. By defualt all one-dimensional barcodes will be detected</param>
         public BarcodeReader(bool tryHarder, bool autoRotate, params BarcodeFormat[] types)
         {
-            reader = new()
+            reader = new ZXing.ImageSharp.BarcodeReader<Rgba32>()
             {
                 AutoRotate = autoRotate,
                 Options = new DecodingOptions()
@@ -77,7 +78,7 @@ namespace BarcodeReader.ImageSharp
 
                     if (result?.Text != null)
                     {
-                        BarcodeResult barcodeResult = new(result.Text, Status.Found, "Barcode found in image", image);
+                        BarcodeResult barcodeResult = new BarcodeResult(result.Text, Status.Found, "Barcode found in image", image);
 
                         // '?.Invoke' is needed as oherwise an exception would be thrown if ther are no subscribers to the DetectedBarcode event
                         DetectedBarcode?.Invoke(this, new BarcodeEventArgs(barcodeResult));
@@ -135,6 +136,6 @@ namespace BarcodeReader.ImageSharp
         /// <summary>
         /// Cuts off the prefix of a base64 image string if it has one
         /// </summary>
-        private static string RemoveBase64Prefix(string img) => img.Split(',')[img.Contains(',') ? 1 : 0];
+        private static string RemoveBase64Prefix(string img) => img.Substring(img.IndexOf(",") + 1);
     }
 }
