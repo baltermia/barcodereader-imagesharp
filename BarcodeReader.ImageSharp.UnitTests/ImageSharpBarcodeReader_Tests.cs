@@ -12,7 +12,7 @@ namespace BarcodeReader.ImageSharp.UnitTests
     public class ImageSharpBarcodeReader_Tests
     {
         private const string CodeText = "ImageSharpBarcodeReader";
-        private readonly string FolderPath = @"..\..\..\codes";
+        private readonly string FolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "codes");
 
         private BarcodeReader reader1D;
         private BarcodeReader readerQR;
