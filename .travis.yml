@@ -1,0 +1,10 @@
+language: csharp
+solution: BarcodeReader.ImageSharp.sln
+dotnet: 6.0
+
+install:
+ - dotnet build BarcodeReader.ImageSharp.sln
+ 
+script:
+  - dotnet build --no-restore
+  - dotnet test --no-build
