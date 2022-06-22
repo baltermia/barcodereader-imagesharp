@@ -1,13 +1,9 @@
 language: csharp
+os: windows
 solution: BarcodeReader.ImageSharp.sln
 dotnet: 6.0
 
 before-install:
- - sudo apt-get install dotnet-sdk-5.0
- - sudo apt-get install dotnet-sdk-4.8
- - sudo apt-get install dotnet-sdk-4.7.2
- - sudo apt-get install dotnet-sdk-2.1
- - sudo apt-get install dotnet-sdk-2.0
 
 install:
  - dotnet build BarcodeReader.ImageSharp.sln
