@@ -9,5 +9,8 @@ install:
  - dotnet build BarcodeReader.ImageSharp.sln
  
 script:
-  - dotnet build --no-restore
-  - dotnet test --no-build
+ - dotnet test BarcodeReader.ImageSharp.UnitTests/BarcodeReader.ImageSharp.UnitTests.csproj -f net6.0
+ - dotnet test BarcodeReader.ImageSharp.UnitTests/BarcodeReader.ImageSharp.UnitTests.csproj -f net5.0
+ - dotnet test BarcodeReader.ImageSharp.UnitTests/BarcodeReader.ImageSharp.UnitTests.csproj -f net48
+ - dotnet test BarcodeReader.ImageSharp.UnitTests/BarcodeReader.ImageSharp.UnitTests.csproj -f net472
+ - dotnet test BarcodeReader.ImageSharp.UnitTests/BarcodeReader.ImageSharp.UnitTests.csproj -f netcoreapp3.1
