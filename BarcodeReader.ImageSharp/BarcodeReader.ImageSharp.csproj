@@ -11,9 +11,8 @@
     <RepositoryType>git</RepositoryType>
     <Description>A barcode reader compatible with SixLabors.ImageSharp using ZXing. Trying to get off System.Drawing.Common.</Description>
     <PackageReleaseNotes>Added support for more Frameworks.</PackageReleaseNotes>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright (c) 2022 Baltermia Clopath</Copyright>
-		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
   </PropertyGroup>
 
