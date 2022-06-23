@@ -5,16 +5,24 @@
     <AssemblyName>BarcodeReader.ImageSharp</AssemblyName>
     <RootNamespace>BarcodeReader.ImageSharp</RootNamespace>
     <PackageId>BarcodeReader.ImageSharp</PackageId>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <Authors>Baltermia Clopath</Authors>
     <RepositoryUrl>https://github.com/baltermia/barcodereader-imagesharp</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <Description>A barcode reader compatible with SixLabors.ImageSharp using ZXing. Trying to get off System.Drawing.Common.</Description>
     <PackageReleaseNotes>Added support for more Frameworks.</PackageReleaseNotes>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>Copyright (c) 2022 Baltermia Clopath</Copyright>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="ZXing.Net.Bindings.ImageSharp" Version="0.16.9-beta" />
   </ItemGroup>
+  
+  <ItemGroup>
+		<None Include="..\LICENSE.md" Pack="true" PackagePath="" />
+	</ItemGroup>
 
 </Project>
