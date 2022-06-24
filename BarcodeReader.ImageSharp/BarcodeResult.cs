@@ -6,38 +6,27 @@ namespace BarcodeReader.ImageSharp
     /// <summary>
     /// Class representing the results after (trying) decoding a barcode from a image
     /// </summary>
-    public class BarcodeResult
+    public class BarcodeResult<T> where T : unmanaged, IPixel<T>
     {
         /// <summary>
         /// String value of the barcode if one could be decoded
         /// </summary>
-        public string Value { get; }
+        public string Value { get; set; }
 
         /// <summary>
         /// Status of the operation
         /// </summary>
-        public Status Status { get; }
+        public Status Status { get; set; }
 
         /// <summary>
         /// The message. Only really usefull if the Status is Error (2)
         /// </summary>
-        public string Message { get; }
+        public string Message { get; set; }
 
         /// <summary>
         /// The image
         /// </summary>
-        public Image<Rgba32> Image { get; }
-
-        /// <summary>
-        /// Creates a new instance of BarcodeResult
-        /// </summary>
-        public BarcodeResult(string value, Status status, string message, Image<Rgba32> image)
-        {
-            Value = value;
-            Status = status;
-            Message = message;
-            Image = image;
-        }
+        public Image<T> Image { get; set; }
     }
 
     /// <summary>

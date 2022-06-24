@@ -14,8 +14,8 @@ namespace BarcodeReader.ImageSharp.UnitTests
         private const string CodeText = "ImageSharpBarcodeReader";
         private readonly string FolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "codes");
 
-        private BarcodeReader reader1D;
-        private BarcodeReader readerQR;
+        private BarcodeReader<Rgba32> reader1D;
+        private BarcodeReader<Rgba32> readerQR;
 
         private Image<Rgba32> barcodeImage;
         private Image<Rgba32> qrcodeImage;
@@ -38,8 +38,8 @@ namespace BarcodeReader.ImageSharp.UnitTests
             barcodeBytes = Convert.FromBase64String(barcodeBase64.Split(',')[1]);
             qrcodeBytes = Convert.FromBase64String(qrcodeBase64.Split(',')[1]);
 
-            reader1D = new BarcodeReader();
-            readerQR = new BarcodeReader(types: ZXing.BarcodeFormat.QR_CODE);
+            reader1D = new BarcodeReader<Rgba32>();
+            readerQR = new BarcodeReader<Rgba32>(types: ZXing.BarcodeFormat.QR_CODE);
         }
 
         [Test]
@@ -128,11 +128,11 @@ namespace BarcodeReader.ImageSharp.UnitTests
             }
         }
 
-        private static void Test(Func<BarcodeResult> func)
+        private static void Test(Func<BarcodeResult<Rgba32>> func)
         {
             try
             {
-                BarcodeResult result = func.Invoke();
+                BarcodeResult<Rgba32> result = func.Invoke();
 
                 switch (result.Status)
                 {
