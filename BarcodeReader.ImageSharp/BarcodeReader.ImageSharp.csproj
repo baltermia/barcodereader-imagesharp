@@ -15,13 +15,13 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="ZXing.Net.Bindings.ImageSharp" Version="0.16.13" />
-  </ItemGroup>
   
   <ItemGroup>
 		<None Include="..\LICENSE.md" Pack="true" PackagePath="" />
 	</ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="ZXing.Net.Bindings.ImageSharp.V2" Version="0.16.14" />
+  </ItemGroup>
 
 </Project>
