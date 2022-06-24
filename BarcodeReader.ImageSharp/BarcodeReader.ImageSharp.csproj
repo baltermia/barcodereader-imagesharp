@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ZXing.Net.Bindings.ImageSharp" Version="0.16.9-beta" />
+    <PackageReference Include="ZXing.Net.Bindings.ImageSharp" Version="0.16.13" />
   </ItemGroup>
   
   <ItemGroup>
