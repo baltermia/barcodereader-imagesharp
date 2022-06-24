@@ -9,6 +9,3 @@ A barcode reader compatible with SixLabors.ImageSharp using ZXing. Trying to get
 </div>
 
 I created this library specifically to use with blazor but you can totally use this for other use cases!
-
-## IMPORTANT
-This library is depending on a pre-release of the `ZXing.Net.Bindings.ImageSharp` library. The release of this library is tagged as full-release though. I am not liable for any issues you encounter.
