@@ -1,0 +1,25 @@
+name: BarcodeReader.ImageSharp Build Pipeline
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+jobs:
+  build:
+    runs-on: windows-2022
+    steps:
+    - name: Checking Out Code
+      uses: actions/checkout@v3
+    - name: Installing .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: latest
+        include-prerelease: true
+    - name: Restoring Nuget Packages
+      run: dotnet restore
+    - name: Builduing Project
+      run: dotnet build --no-restore
+    - name: Running Tests
+      run: dotnet test --no-build --verbosity normal
