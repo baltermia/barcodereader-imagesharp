@@ -8,18 +8,54 @@ on:
     - main
 jobs:
   build:
-    runs-on: windows-2022
+    runs-on: windows-latest
     steps:
     - name: Checking Out Code
       uses: actions/checkout@v3
-    - name: Installing .NET
+      
+    - name: Installing .NET 6.0
       uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: latest
-        include-prerelease: true
-    - name: Restoring Nuget Packages
-      run: dotnet restore
-    - name: Builduing Project
-      run: dotnet build --no-restore
-    - name: Running Tests
-      run: dotnet test --no-build --verbosity normal
+        dotnet-version: 6.0.x
+          
+    - name: Installing .NET 5.0
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 5.0.x  
+        
+    - name: Installing .NET Core 3.1
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 3.1.x
+        
+    - name: Installing .NET Framework 4.8
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 4.8.x
+      
+    - name: Installing .NET Framework 4.7.2
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 4.7.2
+        
+    - name: Restore NuGet packages for Solution
+      run: dotnet restore BarcodeReader.ImageSharp.sln
+      
+    - name: Build Class Library Project
+      run: dotnet build .\BarcodeReader.ImageSharp\BarcodeReader.ImageSharp.csproj --no-restore --framework net6.0
+      
+    - name: Run Tests using .NET 6
+      run: dotnet test .\BarcodeReader.ImageSharp.UnitTests\BarcodeReader.ImageSharp.UnitTests.csproj --framework net6.0    
+      
+    - name: Run Tests using .NET 5
+      run: dotnet test .\BarcodeReader.ImageSharp.UnitTests\BarcodeReader.ImageSharp.UnitTests.csproj --framework net5.0 
+    
+    - name: Run Tests using .NET Core 3.1
+      run: dotnet test .\BarcodeReader.ImageSharp.UnitTests\BarcodeReader.ImageSharp.UnitTests.csproj --framework netcoreapp3.1
+    
+    - name: Run Tests using .NET Framework 4.8
+      run: dotnet test .\BarcodeReader.ImageSharp.UnitTests\BarcodeReader.ImageSharp.UnitTests.csproj --framework net48
+    
+    - name: Run Tests using .NET Framwork 4.7.2
+      run: dotnet test .\BarcodeReader.ImageSharp.UnitTests\BarcodeReader.ImageSharp.UnitTests.csproj --framework net472
+ 
