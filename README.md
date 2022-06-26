@@ -3,7 +3,7 @@
   
 [![Nuget](https://img.shields.io/nuget/v/BarcodeReader.ImageSharp?style=flat-square)](https://www.nuget.org/packages/BarcodeReader.ImageSharp/)
 [![Downloads](https://img.shields.io/nuget/dt/BarcodeReader.ImageSharp.svg?style=flat-square)](https://www.nuget.org/packages/BarcodeReader.ImageSharp/)
-[![Build](https://img.shields.io/github/checks-status/baltermia/barcodereader-imagesharp/main)](https://github.com/baltermia/barcodereader-imagesharp/actions/workflows/dotnet.yml)
+[![Build](https://img.shields.io/github/checks-status/baltermia/barcodereader-imagesharp/main?style=flat-square)](https://github.com/baltermia/barcodereader-imagesharp/actions/workflows/dotnet.yml)
   
 A barcode reader compatible with SixLabors.ImageSharp using ZXing. Trying to get off System.Drawing.Common.
 </div>
