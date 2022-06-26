@@ -27,6 +27,9 @@ jobs:
     - name: Build Class Library Project
       run: dotnet build .\BarcodeReader.ImageSharp\BarcodeReader.ImageSharp.csproj --no-restore --framework net6.0 --verbosity normal
       
+    - name: Build Example Project
+      run: dotnet build .\BarcodeReader.ImageSharp.Examples/BarcodeReader.ImageSharp.Examples.csproj --no-restore --framework net6.0 --verbosity normal 
+      
     - name: Run Tests using .NET 6
       run: dotnet test .\BarcodeReader.ImageSharp.UnitTests\BarcodeReader.ImageSharp.UnitTests.csproj --framework net6.0 --verbosity normal
       
