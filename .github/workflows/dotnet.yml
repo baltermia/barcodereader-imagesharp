@@ -20,9 +20,6 @@ jobs:
           6.0.x
           5.0.x
           3.1.x
-    
-    - name: Setup MSBuild for .NET Framework Tests
-      uses: microsoft/setup-msbuild@v1.1
       
     - name: Restore NuGet packages for Solution
       run: dotnet restore BarcodeReader.ImageSharp.sln
