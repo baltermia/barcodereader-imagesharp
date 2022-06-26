@@ -5,20 +5,23 @@
     <AssemblyName>BarcodeReader.ImageSharp</AssemblyName>
     <RootNamespace>BarcodeReader.ImageSharp</RootNamespace>
     <PackageId>BarcodeReader.ImageSharp</PackageId>
-    <Version>2.0.0</Version>
+    <Version>2.0.1</Version>
     <Authors>Baltermia Clopath</Authors>
     <RepositoryUrl>https://github.com/baltermia/barcodereader-imagesharp</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <Description>A barcode reader compatible with SixLabors.ImageSharp using ZXing. Trying to get off System.Drawing.Common.</Description>
-    <PackageReleaseNotes>Breaking API changes! Please read https://github.com/baltermia/barcodereader-imagesharp/releases/tag/V2.0.0 for full changelog.</PackageReleaseNotes>
+    <PackageReleaseNotes>README added to NuGet package.</PackageReleaseNotes>
     <Copyright>Copyright (c) 2022 Baltermia Clopath</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageReadmeFile>NUGET-README.md</PackageReadmeFile>
   </PropertyGroup>
   
   <ItemGroup>
-		<None Include="..\LICENSE.md" Pack="true" PackagePath="" />
-	</ItemGroup>
+    <None Include="..\LICENSE.md" Pack="true" PackagePath="" />  
+    <None Include="..\README.md" Pack="true" PackagePath="" />
+    <None Include="..\NUGET-README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="ZXing.Net.Bindings.ImageSharp.V2" Version="0.16.14" />
