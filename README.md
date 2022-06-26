@@ -23,7 +23,7 @@ Included Features are:
 ## .NET Support
 The library supports a vast majority of up-to-date .NET versions:
 - .NET Standard 2.0+
-- .NET Framework 4.7.2
+- .NET Framework 4.7.2+
 - .NET Core 3.1+
 - .NET 5+
 
@@ -33,7 +33,7 @@ There are two ways to add the [BarcodeReader.ImageSharp](https://www.nuget.org/p
 
 1. Open the command line and go into the directoy where your .csproj file is located, then execute this command:
 ```
-dotnet add package BlazorCameraStreamer
+dotnet add package BarcodeReader.ImageSharp
 ```
 
 2. Or add it in the GUI of Visual Studio 20XX:  
