@@ -5,7 +5,7 @@
 [![Downloads](https://img.shields.io/nuget/dt/BarcodeReader.ImageSharp.svg?style=flat-square)](https://www.nuget.org/packages/BarcodeReader.ImageSharp/)
 ![Build Status](https://img.shields.io/github/actions/workflow/status/baltermia/barcodereader-imagesharp/dotnet.yml?style=flat-square)
   
-A barcode reader compatible with SixLabors.ImageSharp using ZXing. Trying to get off System.Drawing.Common.
+A barcode reader compatible with SixLabors.ImageSharp using ZXing. Trying to remove System.Drawing.Common dependencies.
 </div>
 
 I created this library specifically to use with blazor but you can totally use this for other use cases!
